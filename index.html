@@ -4,231 +4,85 @@
 <meta charset="UTF-8">
 <meta name="google-site-verification" content="rcrBX693X3p-0DjXS5yDwLLIqkYvb5ptk2PEJBiukVs" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>The Cake Corner | Fresh Cakes in Palsana Gujarat</title>
 <meta name="description" content="Order fresh cakes in Palsana, Gujarat. Custom cakes for birthdays, weddings, and all occasions.">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-body {
-  background: linear-gradient(to bottom, #f8d7da, #fff);
-  color: #5a3e36;
-}
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif;}
+body {background:linear-gradient(to bottom,#f8d7da,#fff); color:#5a3e36;}
 
 /* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 40px;
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(10px);
-  position: sticky;
-  top: 0;
-  border-radius: 20px;
-  margin: 10px;
-  z-index: 1000;
-}
-
-.logo {
-  font-family: 'Pacifico', cursive;
-  font-size: 22px;
-}
-
-nav {
-  margin-top: 5px;
-}
-
-nav a {
-  margin: 0 10px;
-  text-decoration: none;
-  color: #5a3e36;
-  position: relative;
-}
-
-nav a.active::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background: #5a3e36;
-  bottom: -5px;
-  left: 0;
-}
+.navbar {display:flex;justify-content:space-between;padding:15px 40px;background:rgba(255,255,255,0.7);backdrop-filter:blur(10px);position:sticky;top:0;border-radius:20px;margin:10px;z-index:1000;}
+.logo {font-family:'Pacifico',cursive;font-size:22px;}
+nav .dropdown {position:relative; display:inline-block;}
+nav .dropdown-content {display:none;position:absolute;background:rgba(255,255,255,0.9);min-width:160px;border-radius:10px;box-shadow:0 4px 15px rgba(0,0,0,0.1);z-index:1000;}
+nav .dropdown-content a {display:block;padding:10px 15px;color:#5a3e36;text-decoration:none;}
+nav .dropdown-content a:hover {background:#f0e0e0;}
+nav .dropdown:hover .dropdown-content {display:block;}
+nav {margin-top:5px;}
+nav a {margin:0 10px;text-decoration:none;color:#5a3e36;position:relative;}
+nav a.active::after {content:"";position:absolute;width:100%;height:2px;background:#5a3e36;bottom:-5px;left:0;}
 
 /* Hero */
-.hero {
-  height: 90vh;
-  background: url('https://images.unsplash.com/photo-1551024601-bec78aea704b?w=1200&q=80') center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.overlay {
-  text-align: center;
-  background: rgba(255,255,255,0.75);
-  padding: 40px;
-  border-radius: 20px;
-}
-
-.overlay h1 {
-  font-size: 42px;
-  font-family: 'Pacifico', cursive;
-}
-
-.overlay p {
-  margin: 15px 0;
-}
-
-.btn {
-  display: inline-block;
-  background: #2e7d32;
-  color: white;
-  padding: 12px 25px;
-  border-radius: 25px;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #1b5e20;
-}
-
-.btn:active {
-  transform: scale(0.96);
-}
+.hero {height:90vh;background:url('https://images.unsplash.com/photo-1551024601-bec78aea704b?w=1200&q=80') center/cover no-repeat;display:flex;align-items:center;justify-content:center;}
+.overlay {text-align:center;background:rgba(255,255,255,0.75);padding:40px;border-radius:20px;}
+.overlay h1 {font-size:42px;font-family:'Pacifico',cursive;}
+.overlay p {margin:15px 0;}
+.btn {display:inline-block;background:#2e7d32;color:white;padding:12px 25px;border-radius:25px;text-decoration:none;transition:0.3s; cursor:pointer;}
+.btn:hover {background:#1b5e20;}
+.btn:active {transform:scale(0.96);}
 
 /* Sections */
-.section {
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.section h2 {
-  font-family: 'Pacifico', cursive;
-  margin-bottom: 30px;
-}
+.section {padding:60px 20px;text-align:center;}
+.section h2 {font-family:'Pacifico',cursive;margin-bottom:30px;}
 
 /* Cards */
-.cards {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.card {
-  background: white;
-  border-radius: 15px;
-  overflow: hidden;
-  width: 280px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: 0.3s;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.card.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.card:hover {
-  transform: translateY(-8px) scale(1.02);
-}
-
-.card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.card h3 {
-  margin: 10px 0;
-}
-
-.card p {
-  margin-bottom: 15px;
-}
+.cards {display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
+.card {background:white;border-radius:15px;overflow:hidden;width:280px;box-shadow:0 4px 15px rgba(0,0,0,0.1);transition:0.3s;opacity:0;transform:translateY(20px);text-align:center;}
+.card.show {opacity:1;transform:translateY(0);}
+.card:hover {transform:translateY(-8px) scale(1.02);}
+.card img {width:100%;height:180px;object-fit:cover;border-radius:10px;}
+.card h3 {margin:10px 0;}
+.card p {margin-bottom:15px;}
 
 /* About */
-.about {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-}
-
-.about-text {
-  max-width: 400px;
-}
-
-.about-img img {
-  width: 100%;
-  max-width: 350px;
-  border-radius: 15px;
-}
+.about {display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:40px;}
+.about-text {max-width:400px;}
+.about-img img {width:100%;max-width:350px;border-radius:15px;}
 
 /* Contact */
-.contact {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-}
-
-.map iframe {
-  width: 100%;
-  max-width: 350px;
-  border-radius: 15px;
-}
+.contact {display:flex;flex-wrap:wrap;justify-content:center;gap:40px;}
+.map iframe {width:100%;max-width:350px;border-radius:15px;}
 
 /* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: rgba(255,255,255,0.7);
-  margin-top: 20px;
-}
+footer {text-align:center;padding:20px;background:rgba(255,255,255,0.7);margin-top:20px;}
 
 /* Responsive */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero {
-    height: 70vh;
-  }
-
-  .overlay h1 {
-    font-size: 28px;
-  }
-
-  nav {
-    margin-top: 10px;
-  }
+@media (max-width:768px) {
+  .navbar {flex-direction:column;align-items:center;}
+  .hero {height:70vh;}
+  .overlay h1 {font-size:28px;}
+  nav {margin-top:10px;}
 }
 </style>
 </head>
-
 <body>
 
 <header class="navbar">
   <div class="logo">The Cake Corner 🍰</div>
   <nav>
     <a href="#home" class="active">Home</a>
-    <a href="#menu">Menu</a>
+    <div class="dropdown">
+      <a href="#menu">Menu ▾</a>
+      <div class="dropdown-content">
+        <a href="#best-sellers">Best Sellers</a>
+        <a href="#pastries">Pastries</a>
+        <a href="#birthday-special">Birthday Special</a>
+        <a href="#birthday-items">Birthday Items</a>
+      </div>
+    </div>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -238,91 +92,148 @@ footer {
   <div class="overlay">
     <h1>Fresh Cakes Delivered Daily</h1>
     <p>Delicious cakes for every occasion</p>
-    <a href="https://wa.me/919687935232?text=Hi%20I%20want%20to%20order%20a%20cake"
-       class="btn"
-       target="_blank"
-       rel="noopener noreferrer">
-       Order Now on WhatsApp
-    </a>
   </div>
 </section>
 
-<section id="menu" class="section">
+<!-- Best Sellers -->
+<section id="best-sellers" class="section">
   <h2>Best Sellers</h2>
-
   <div class="cards">
     <div class="card">
-      <img loading="lazy" width="280" height="180"
-        src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=600&q=80"
-        alt="Chocolate Cake">
+      <img loading="lazy" width="280" height="180" src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=600&q=80" alt="Chocolate Cake">
       <h3>Chocolate Delight</h3>
-      <p>₹ Price According to KG's</p>
+      <p>₹500 per KG</p>
+      <a class="btn" onclick="addToCart('Chocolate Delight',500)">Add to Cart</a>
     </div>
-
     <div class="card">
-      <img loading="lazy" width="280" height="180"
-        src="https://www.warmoven.in/cdn/shop/files/duel-delight-chocolate_-cake.jpg?v=1749833568"
-        alt="Birthday Cake">
+      <img loading="lazy" width="280" height="180" src="https://www.warmoven.in/cdn/shop/files/duel-delight-chocolate_-cake.jpg?v=1749833568" alt="Birthday Cake">
       <h3>Birthday Special</h3>
-      <p>₹ Price According to KG's</p>
+      <p>₹550 per KG</p>
+      <a class="btn" onclick="addToCart('Birthday Special',550)">Add to Cart</a>
     </div>
-
     <div class="card">
-      <img loading="lazy" width="280" height="180"
-        src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=600&q=80"
-        alt="Custom Cake">
+      <img loading="lazy" width="280" height="180" src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=600&q=80" alt="Custom Cake">
       <h3>Custom Cake</h3>
-      <p>₹ Price According to KG's</p>
+      <p>₹600 per KG</p>
+      <a class="btn" onclick="addToCart('Custom Cake',600)">Add to Cart</a>
     </div>
   </div>
 </section>
 
+<!-- Pastries -->
+<section id="pastries" class="section" style="background:#fff0f5;">
+  <h2>Our Delicious Pastries</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="https://www.warmoven.in/cdn/shop/files/duel-delight-chocolate_-cake.jpg?v=1749833568" alt="Chocolate Pastry">
+      <h3>Chocolate Pastry</h3>
+      <p>₹120 each</p>
+      <a class="btn" onclick="addToCart('Chocolate Pastry',120)">Add to Cart</a>
+    </div>
+    <div class="card">
+      <img src="https://www.warmoven.in/cdn/shop/files/duel-delight-chocolate_-cake.jpg?v=1749833568" alt="Vanilla Pastry">
+      <h3>Vanilla Pastry</h3>
+      <p>₹100 each</p>
+      <a class="btn" onclick="addToCart('Vanilla Pastry',100)">Add to Cart</a>
+    </div>
+    <div class="card">
+      <img src="https://www.warmoven.in/cdn/shop/files/duel-delight-chocolate_-cake.jpg?v=1749833568" alt="Strawberry Pastry">
+      <h3>Strawberry Pastry</h3>
+      <p>₹130 each</p>
+      <a class="btn" onclick="addToCart('Strawberry Pastry',130)">Add to Cart</a>
+    </div>
+    <div class="card">
+      <img src="https://www.warmoven.in/cdn/shop/files/duel-delight-chocolate_-cake.jpg?v=1749833568" alt="Mixed Fruit Pastry">
+      <h3>Mixed Fruit Pastry</h3>
+      <p>₹140 each</p>
+      <a class="btn" onclick="addToCart('Mixed Fruit Pastry',140)">Add to Cart</a>
+    </div>
+  </div>
+</section>
+
+<!-- Birthday Specials -->
+<section id="birthday-special" class="section" style="background:#fff8e1;">
+  <h2>Birthday Specials</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="https://www.warmoven.in/cdn/shop/files/duel-delight-chocolate_-cake.jpg?v=1749833568" alt="Chocolate Birthday Cake">
+      <h3>Chocolate Birthday Cake</h3>
+      <p>₹800</p>
+      <a class="btn" onclick="addToCart('Chocolate Birthday Cake',800)">Add to Cart</a>
+    </div>
+    <div class="card">
+      <img src="https://www.warmoven.in/cdn/shop/files/duel-delight-chocolate_-cake.jpg?v=1749833568" alt="Vanilla Birthday Cake">
+      <h3>Vanilla Birthday Cake</h3>
+      <p>₹750</p>
+      <a class="btn" onclick="addToCart('Vanilla Birthday Cake',750)">Add to Cart</a>
+    </div>
+    <div class="card">
+      <img src="https://www.warmoven.in/cdn/shop/files/duel-delight-chocolate_-cake.jpg?v=1749833568" alt="Cake Toppers & Candles">
+      <h3>Cake Toppers & Candles</h3>
+      <p>₹150–₹300</p>
+      <a class="btn" onclick="addToCart('Cake Toppers & Candles',200)">Add to Cart</a>
+    </div>
+    <div class="card">
+      <img src="https://www.warmoven.in/cdn/shop/files/duel-delight-chocolate_-cake.jpg?v=1749833568" alt="Birthday Combo Pack">
+      <h3>Birthday Combo Pack</h3>
+      <p>₹1200</p>
+      <a class="btn" onclick="addToCart('Birthday Combo Pack',1200)">Add to Cart</a>
+    </div>
+  </div>
+</section>
+
+<!-- Birthday Items -->
+<section id="birthday-items" class="section" style="background:#fff8e1;">
+  <h2>Birthday Items</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="https://www.warmoven.in/cdn/shop/files/duel-delight-chocolate_-cake.jpg?v=1749833568" alt="Chocolate Birthday Cake">
+      <h3>Chocolate Birthday Cake</h3>
+      <p>₹800</p>
+      <a class="btn" onclick="addToCart('Chocolate Birthday Cake',800)">Add to Cart</a>
+    </div>
+    <div class="card">
+      <img src="https://www.warmoven.in/cdn/shop/files/duel-delight-chocolate_-cake.jpg?v=1749833568" alt="Vanilla Birthday Cake">
+      <h3>Vanilla Birthday Cake</h3>
+      <p>₹750</p>
+      <a class="btn" onclick="addToCart('Vanilla Birthday Cake',750)">Add to Cart</a>
+    </div>
+    <div class="card">
+      <img src="https://www.warmoven.in/cdn/shop/files/duel-delight-chocolate_-cake.jpg?v=1749833568" alt="Cake Toppers & Candles">
+      <h3>Cake Toppers & Candles</h3>
+      <p>₹150–₹300</p>
+      <a class="btn" onclick="addToCart('Cake Toppers & Candles',200)">Add to Cart</a>
+    </div>
+    <div class="card">
+      <img src="https://www.warmoven.in/cdn/shop/files/duel-delight-chocolate_-cake.jpg?v=1749833568" alt="Birthday Combo Pack">
+      <h3>Birthday Combo Pack</h3>
+      <p>₹1200</p>
+      <a class="btn" onclick="addToCart('Birthday Combo Pack',1200)">Add to Cart</a>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
 <section id="about" class="section about">
   <div class="about-text">
     <h2>About Us</h2>
-    <p>
-      Baking with love and the finest ingredients to make your celebrations sweet and special.
-    </p>
+    <p>Baking with love and the finest ingredients to make your celebrations sweet and special.</p>
   </div>
-
   <div class="about-img">
-    <img loading="lazy"
-      src="https://floweraura-blog-img.s3.ap-south-1.amazonaws.com/baking_cake/cake+baking+tips.png"
-      alt="Cake baking">
+    <img loading="lazy" src="https://floweraura-blog-img.s3.ap-south-1.amazonaws.com/baking_cake/cake+baking+tips.png" alt="Cake baking">
   </div>
 </section>
 
+<!-- Contact -->
 <section id="contact" class="section contact">
   <div class="contact-info">
     <h2>Contact Us</h2>
-
     <p>📞 <a href="tel:9687935232">+91 96879 35232</a></p>
-
-    <p>
-      📍 Laxmi Complex, near Kotak Bank,<br>
-      Palsana, Gujarat 394315
-    </p>
-
-    <p><strong>Hours:</strong><br>
-      Mon – Sun: 9:00 AM – 9:00 PM
-    </p>
-
-    <a href="https://wa.me/919687935232?text=Hi%20I%20want%20to%20order%20a%20cake"
-       class="btn"
-       target="_blank"
-       rel="noopener noreferrer">
-       Order on WhatsApp
-    </a>
+    <p>📍 Laxmi Complex, near Kotak Bank,<br>Palsana, Gujarat 394315</p>
+    <p><strong>Hours:</strong><br>Mon – Sun: 9:00 AM – 9:00 PM</p>
   </div>
-
   <div class="map">
-    <iframe
-      src="https://www.google.com/maps?q=Laxmi+Complex+Palsana+Gujarat&output=embed"
-      height="250"
-      style="border:0;"
-      allowfullscreen=""
-      loading="lazy">
-    </iframe>
+    <iframe src="https://www.google.com/maps?q=Laxmi+Complex+Palsana+Gujarat&output=embed" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
   </div>
 </section>
 
@@ -330,8 +241,23 @@ footer {
   <p>© 2026 The Cake Corner. All Rights Reserved.</p>
 </footer>
 
+<!-- Cart System -->
+<div id="cart-btn" style="position:fixed;bottom:20px;right:20px;background:#2e7d32;color:white;padding:15px 20px;border-radius:50px;cursor:pointer;z-index:1000;">
+  🛒 Cart (<span id="cart-count">0</span>)
+</div>
+
+<div id="cart-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:2000;justify-content:center;align-items:center;">
+  <div style="background:white;border-radius:15px;padding:20px;width:90%;max-width:400px;max-height:80%;overflow-y:auto;position:relative;">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <p><strong>Total: ₹<span id="cart-total">0</span></strong></p>
+    <button id="whatsapp-order" class="btn">Order on WhatsApp</button>
+    <button onclick="closeCart()" style="position:absolute;top:10px;right:15px;font-size:18px;background:none;border:none;cursor:pointer;">✖</button>
+  </div>
+</div>
+
 <script>
-// Smooth scrolling (safe)
+// Smooth scrolling
 document.querySelectorAll('nav a').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     const target = document.querySelector(this.getAttribute('href'));
@@ -345,39 +271,72 @@ document.querySelectorAll('nav a').forEach(anchor => {
 // Active navbar on scroll
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("nav a");
-
 window.addEventListener("scroll", () => {
   let current = "";
-
   sections.forEach(section => {
     const sectionTop = section.offsetTop - 120;
-    if (scrollY >= sectionTop) {
-      current = section.getAttribute("id");
-    }
+    if (scrollY >= sectionTop) current = section.getAttribute("id");
   });
-
   navLinks.forEach(link => {
     link.classList.remove("active");
-    if (link.getAttribute("href") === "#" + current) {
-      link.classList.add("active");
-    }
+    if (link.getAttribute("href") === "#" + current) link.classList.add("active");
   });
 });
 
-// Scroll reveal animation
+// Scroll reveal
 const cards = document.querySelectorAll(".card");
-
 function revealCards() {
   cards.forEach(card => {
     const top = card.getBoundingClientRect().top;
-    if (top < window.innerHeight - 50) {
-      card.classList.add("show");
-    }
+    if (top < window.innerHeight - 50) card.classList.add("show");
   });
 }
-
 window.addEventListener("scroll", revealCards);
 window.addEventListener("load", revealCards);
+
+// Cart System
+let cart = [];
+
+function addToCart(name, price) {
+  const existing = cart.find(item => item.name === name);
+  if (existing) existing.qty++;
+  else cart.push({ name, price, qty:1 });
+  updateCart();
+}
+
+function updateCart() {
+  document.getElementById('cart-count').textContent = cart.reduce((a,b)=>a+b.qty,0);
+  const cartItems = document.getElementById('cart-items');
+  cartItems.innerHTML = '';
+  let total = 0;
+  cart.forEach(item => {
+    total += item.price*item.qty;
+    const div = document.createElement('div');
+    div.style.marginBottom = "10px";
+    div.innerHTML = `${item.name} x ${item.qty} - ₹${item.price*item.qty} <button onclick="removeFromCart('${item.name}')">❌</button>`;
+    cartItems.appendChild(div);
+  });
+  document.getElementById('cart-total').textContent = total;
+}
+
+function removeFromCart(name) {
+  cart = cart.filter(item => item.name !== name);
+  updateCart();
+}
+
+document.getElementById('cart-btn').addEventListener('click', () => {
+  document.getElementById('cart-modal').style.display = 'flex';
+});
+function closeCart() {document.getElementById('cart-modal').style.display = 'none';}
+
+document.getElementById('whatsapp-order').addEventListener('click', () => {
+  if(cart.length===0) return alert('Cart is empty!');
+  let message = 'Hi, I want to order:\n';
+  cart.forEach(item => {message += `${item.name} x ${item.qty} = ₹${item.price*item.qty}\n`;});
+  message += `Total: ₹${cart.reduce((a,b)=>a+b.price*b.qty,0)}`;
+  const url = 'https://wa.me/919687935232?text=' + encodeURIComponent(message);
+  window.open(url, '_blank');
+});
 </script>
 
 </body>
