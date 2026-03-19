@@ -66,6 +66,226 @@ footer {text-align:center;padding:20px;background:rgba(255,255,255,0.7);margin-t
   .overlay h1 {font-size:28px;}
   nav {margin-top:10px;}
 }
+  
+/* Cart Modal Styles */
+#cart-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 2000;
+  justify-content: center; align-items: center;
+  overflow-y: auto;
+}
+
+.cart-content {
+  background: #fff0f5; /* light pastel pink for cake vibes */
+  border-radius: 20px;
+  padding: 25px;
+  width: 90%; max-width: 400px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  position: relative;
+  animation: slideIn 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cart-close {
+  position: absolute;
+  top: 15px; right: 20px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #5a3e36;
+}
+
+#cart-items div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  background: #fff;
+  padding: 8px 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+#cart-items button {
+  background: #f8d7da;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: bold;
+}
+
+#cart-items button:hover {
+  background: #f5c2c7;
+}
+
+.cart-total {
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+#whatsapp-order {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  background: #25D366;
+  border-radius: 25px;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  transition: 0.3s;
+}
+
+#whatsapp-order:hover {
+  background: #128C7E;
+}
+
+/* Slide-in animation for cart */
+@keyframes slideIn {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+  
+/* Floating Cart Styles */
+#cart-float {
+  position: fixed;
+  bottom: 80px; /* above cart button */
+  right: 20px;
+  width: 320px;
+  max-height: 400px;
+  background: #f4c2c2; /* darker pastel pink */
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25); /* more pronounced shadow */
+  display: none; /* hidden by default */
+  flex-direction: column;
+  overflow-y: auto;
+  font-family: 'Poppins', sans-serif;
+  animation: slideUp 0.3s ease;
+  z-index: 2000;
+}
+
+/* Cart Header */
+#cart-float .cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #e89ca5; /* darker header for contrast */
+  color: #5a3e36;
+  font-weight: 600;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: inset 0 -2px 3px rgba(0,0,0,0.1);
+}
+
+/* Close Button */
+#cart-float .cart-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #5a3e36;
+  transition: 0.2s;
+}
+#cart-float .cart-close:hover {
+  color: #fff;
+}
+
+/* Cart Items */
+#cart-items div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 15px;
+  padding: 8px 10px;
+  background: #ffe0e6; /* slightly lighter item background */
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: 0.2s;
+}
+#cart-items div:hover {
+  background: #ffd1d9;
+}
+
+/* Buttons inside cart items (+, -, remove) */
+#cart-items button {
+  background: #e89ca5;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #fff;
+  transition: 0.2s;
+  margin-left: 4px;
+}
+#cart-items button:hover {
+  background: #d6737a; /* darker on hover */
+}
+
+/* Cart Footer */
+.cart-footer {
+  padding: 15px 20px;
+  border-top: 1px solid #f2b8c0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #f4b6bd; /* slightly darker footer */
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/* Total text */
+.cart-footer p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #5a3e36;
+  margin: 0;
+}
+
+/* WhatsApp Order Button */
+#cart-float #whatsapp-order {
+  width: 100%;
+  padding: 12px 0;
+  background: #25D366; /* WhatsApp green */
+  color: #fff;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.3s;
+  border: none;
+}
+#cart-float #whatsapp-order:hover {
+  background: #128C7E; /* darker green on hover */
+}
+
+/* Slide-up animation */
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Optional: Scrollbar for cart */
+#cart-float::-webkit-scrollbar {
+  width: 6px;
+}
+#cart-float::-webkit-scrollbar-thumb {
+  background-color: #e89ca5;
+  border-radius: 3px;
+}
+/* Slide-up animation */
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+  
 </style>
 </head>
 <body>
@@ -246,8 +466,19 @@ footer {text-align:center;padding:20px;background:rgba(255,255,255,0.7);margin-t
   🛒 Cart (<span id="cart-count">0</span>)
 </div>
 
-<div id="cart-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:2000;justify-content:center;align-items:center;">
-  <div style="background:white;border-radius:15px;padding:20px;width:90%;max-width:400px;max-height:80%;overflow-y:auto;position:relative;">
+<!-- Floating Cart -->
+<div id="cart-float">
+  <div class="cart-header">
+    <h3>🛒 Your Cart</h3>
+    <button class="cart-close" onclick="closeCart()">✖</button>
+  </div>
+  <div id="cart-items"></div>
+  <div class="cart-footer">
+    <p><strong>Total: ₹<span id="cart-total">0</span></strong></p>
+    <button id="whatsapp-order" class="btn">Order on WhatsApp</button>
+  </div>
+</div>
+  
     <h2>Your Cart</h2>
     <div id="cart-items"></div>
     <p><strong>Total: ₹<span id="cart-total">0</span></strong></p>
@@ -257,7 +488,7 @@ footer {text-align:center;padding:20px;background:rgba(255,255,255,0.7);margin-t
 </div>
 
 <script>
-// Smooth scrolling
+// ---------------- Smooth Scrolling ----------------
 document.querySelectorAll('nav a').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     const target = document.querySelector(this.getAttribute('href'));
@@ -268,7 +499,7 @@ document.querySelectorAll('nav a').forEach(anchor => {
   });
 });
 
-// Active navbar on scroll
+// ---------------- Active Navbar on Scroll ----------------
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("nav a");
 window.addEventListener("scroll", () => {
@@ -283,7 +514,7 @@ window.addEventListener("scroll", () => {
   });
 });
 
-// Scroll reveal
+// ---------------- Scroll Reveal ----------------
 const cards = document.querySelectorAll(".card");
 function revealCards() {
   cards.forEach(card => {
@@ -294,45 +525,93 @@ function revealCards() {
 window.addEventListener("scroll", revealCards);
 window.addEventListener("load", revealCards);
 
-// Cart System
+// ---------------- Floating Cart System ----------------
 let cart = [];
+
+// Select floating cart elements
+const cartBtn = document.getElementById('cart-btn');
+const cartFloat = document.getElementById('cart-float');
+const cartItemsContainer = document.getElementById('cart-items');
+const cartTotal = document.getElementById('cart-total');
+const whatsappBtn = document.getElementById('whatsapp-order');
+
+// ---------------- Add to Cart ----------------
+// Only bind buttons with .add-cart-btn class
+document.querySelectorAll('.add-cart-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const name = btn.dataset.name;
+    const price = parseInt(btn.dataset.price);
+    addToCart(name, price);
+  });
+});
 
 function addToCart(name, price) {
   const existing = cart.find(item => item.name === name);
   if (existing) existing.qty++;
-  else cart.push({ name, price, qty:1 });
+  else cart.push({ name, price, qty: 1 });
   updateCart();
 }
 
-function updateCart() {
-  document.getElementById('cart-count').textContent = cart.reduce((a,b)=>a+b.qty,0);
-  const cartItems = document.getElementById('cart-items');
-  cartItems.innerHTML = '';
-  let total = 0;
-  cart.forEach(item => {
-    total += item.price*item.qty;
-    const div = document.createElement('div');
-    div.style.marginBottom = "10px";
-    div.innerHTML = `${item.name} x ${item.qty} - ₹${item.price*item.qty} <button onclick="removeFromCart('${item.name}')">❌</button>`;
-    cartItems.appendChild(div);
-  });
-  document.getElementById('cart-total').textContent = total;
+// ---------------- Change Quantity ----------------
+function changeQty(nameEncoded, delta) {
+  const name = decodeURIComponent(nameEncoded);
+  const item = cart.find(i => i.name === name);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) removeFromCart(nameEncoded);
+  else updateCart();
 }
 
-function removeFromCart(name) {
+// ---------------- Remove Item ----------------
+function removeFromCart(nameEncoded) {
+  const name = decodeURIComponent(nameEncoded);
   cart = cart.filter(item => item.name !== name);
   updateCart();
 }
 
-document.getElementById('cart-btn').addEventListener('click', () => {
-  document.getElementById('cart-modal').style.display = 'flex';
-});
-function closeCart() {document.getElementById('cart-modal').style.display = 'none';}
+// ---------------- Update Cart Display ----------------
+function updateCart() {
+  // Update count on floating button
+  const cartCount = document.getElementById('cart-count');
+  cartCount.textContent = cart.reduce((a,b)=>a+b.qty,0);
 
-document.getElementById('whatsapp-order').addEventListener('click', () => {
-  if(cart.length===0) return alert('Cart is empty!');
+  // Clear items
+  cartItemsContainer.innerHTML = '';
+  let total = 0;
+
+  cart.forEach(item => {
+    total += item.price * item.qty;
+    const div = document.createElement('div');
+    div.innerHTML = `
+      <span>${item.name} x ${item.qty} - ₹${item.price*item.qty}</span>
+      <div>
+        <button onclick="changeQty('${encodeURIComponent(item.name)}', 1)">➕</button>
+        <button onclick="changeQty('${encodeURIComponent(item.name)}', -1)">➖</button>
+        <button onclick="removeFromCart('${encodeURIComponent(item.name)}')">❌</button>
+      </div>
+    `;
+    cartItemsContainer.appendChild(div);
+  });
+
+  cartTotal.textContent = total;
+}
+
+// ---------------- Floating Cart Toggle ----------------
+cartBtn.addEventListener('click', () => {
+  cartFloat.style.display = 'flex';
+});
+
+function closeCart() {
+  cartFloat.style.display = 'none';
+}
+
+// ---------------- WhatsApp Order ----------------
+whatsappBtn.addEventListener('click', () => {
+  if(cart.length === 0) return alert('Cart is empty!');
   let message = 'Hi, I want to order:\n';
-  cart.forEach(item => {message += `${item.name} x ${item.qty} = ₹${item.price*item.qty}\n`;});
+  cart.forEach(item => {
+    message += `${item.name} x ${item.qty} = ₹${item.price*item.qty}\n`;
+  });
   message += `Total: ₹${cart.reduce((a,b)=>a+b.price*b.qty,0)}`;
   const url = 'https://wa.me/919687935232?text=' + encodeURIComponent(message);
   window.open(url, '_blank');
