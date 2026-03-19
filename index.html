@@ -4,9 +4,11 @@
 <meta charset="UTF-8">
 <meta name="google-site-verification" content="rcrBX693X3p-0DjXS5yDwLLIqkYvb5ptk2PEJBiukVs" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Cake Corner</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
+<title>The Cake Corner | Fresh Cakes in Palsana Gujarat</title>
+<meta name="description" content="Order fresh cakes in Palsana, Gujarat. Custom cakes for birthdays, weddings, and all occasions.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -32,11 +34,16 @@ body {
   top: 0;
   border-radius: 20px;
   margin: 10px;
+  z-index: 1000;
 }
 
 .logo {
   font-family: 'Pacifico', cursive;
   font-size: 22px;
+}
+
+nav {
+  margin-top: 5px;
 }
 
 nav a {
@@ -59,7 +66,7 @@ nav a.active::after {
 /* Hero */
 .hero {
   height: 90vh;
-  background: url('https://images.unsplash.com/photo-1551024601-bec78aea704b') center/cover no-repeat;
+  background: url('https://images.unsplash.com/photo-1551024601-bec78aea704b?w=1200&q=80') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,7 +74,7 @@ nav a.active::after {
 
 .overlay {
   text-align: center;
-  background: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.75);
   padding: 40px;
   border-radius: 20px;
 }
@@ -93,6 +100,10 @@ nav a.active::after {
 
 .btn:hover {
   background: #1b5e20;
+}
+
+.btn:active {
+  transform: scale(0.96);
 }
 
 /* Sections */
@@ -121,10 +132,17 @@ nav a.active::after {
   width: 280px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   transition: 0.3s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px) scale(1.02);
 }
 
 .card img {
@@ -155,7 +173,8 @@ nav a.active::after {
 }
 
 .about-img img {
-  width: 350px;
+  width: 100%;
+  max-width: 350px;
   border-radius: 15px;
 }
 
@@ -167,8 +186,9 @@ nav a.active::after {
   gap: 40px;
 }
 
-.map img {
-  width: 350px;
+.map iframe {
+  width: 100%;
+  max-width: 350px;
   border-radius: 15px;
 }
 
@@ -194,6 +214,10 @@ footer {
   .overlay h1 {
     font-size: 28px;
   }
+
+  nav {
+    margin-top: 10px;
+  }
 }
 </style>
 </head>
@@ -214,7 +238,12 @@ footer {
   <div class="overlay">
     <h1>Fresh Cakes Delivered Daily</h1>
     <p>Delicious cakes for every occasion</p>
-    <a href="https://wa.me/919687935232?text=Hi%20I%20want%20to%20order%20a%20cake" class="btn" target = "_blank">Order Now on WhatsApp</a>
+    <a href="https://wa.me/919687935232?text=Hi%20I%20want%20to%20order%20a%20cake"
+       class="btn"
+       target="_blank"
+       rel="noopener noreferrer">
+       Order Now on WhatsApp
+    </a>
   </div>
 </section>
 
@@ -223,19 +252,25 @@ footer {
 
   <div class="cards">
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52">
+      <img loading="lazy" width="280" height="180"
+        src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=600&q=80"
+        alt="Chocolate Cake">
       <h3>Chocolate Delight</h3>
       <p>₹ Price According to KG's</p>
     </div>
 
     <div class="card">
-      <img src="https://www.warmoven.in/cdn/shop/files/duel-delight-chocolate_-cake.jpg?v=1749833568">
+      <img loading="lazy" width="280" height="180"
+        src="https://www.warmoven.in/cdn/shop/files/duel-delight-chocolate_-cake.jpg?v=1749833568"
+        alt="Birthday Cake">
       <h3>Birthday Special</h3>
       <p>₹ Price According to KG's</p>
     </div>
 
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729">
+      <img loading="lazy" width="280" height="180"
+        src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=600&q=80"
+        alt="Custom Cake">
       <h3>Custom Cake</h3>
       <p>₹ Price According to KG's</p>
     </div>
@@ -251,7 +286,9 @@ footer {
   </div>
 
   <div class="about-img">
-    <img src="https://floweraura-blog-img.s3.ap-south-1.amazonaws.com/baking_cake/cake+baking+tips.png">
+    <img loading="lazy"
+      src="https://floweraura-blog-img.s3.ap-south-1.amazonaws.com/baking_cake/cake+baking+tips.png"
+      alt="Cake baking">
   </div>
 </section>
 
@@ -270,8 +307,10 @@ footer {
       Mon – Sun: 9:00 AM – 9:00 PM
     </p>
 
-    <a href="https://wa.me/919687935232?text=Hi%20I%20want%20to%20order%20a%20cake" 
-       class="btn" target="_blank">
+    <a href="https://wa.me/919687935232?text=Hi%20I%20want%20to%20order%20a%20cake"
+       class="btn"
+       target="_blank"
+       rel="noopener noreferrer">
        Order on WhatsApp
     </a>
   </div>
@@ -279,9 +318,8 @@ footer {
   <div class="map">
     <iframe
       src="https://www.google.com/maps?q=Laxmi+Complex+Palsana+Gujarat&output=embed"
-      width="350"
       height="250"
-      style="border:0; border-radius:15px;"
+      style="border:0;"
       allowfullscreen=""
       loading="lazy">
     </iframe>
@@ -289,18 +327,57 @@ footer {
 </section>
 
 <footer>
-  <p>© 2022 The Cake Corner. All Rights Reserved.</p>
+  <p>© 2026 The Cake Corner. All Rights Reserved.</p>
 </footer>
 
 <script>
-// Smooth scrolling
+// Smooth scrolling (safe)
 document.querySelectorAll('nav a').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute('href'))
-      .scrollIntoView({ behavior: 'smooth' });
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
   });
 });
+
+// Active navbar on scroll
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120;
+    if (scrollY >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
+  });
+});
+
+// Scroll reveal animation
+const cards = document.querySelectorAll(".card");
+
+function revealCards() {
+  cards.forEach(card => {
+    const top = card.getBoundingClientRect().top;
+    if (top < window.innerHeight - 50) {
+      card.classList.add("show");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealCards);
+window.addEventListener("load", revealCards);
 </script>
 
 </body>
