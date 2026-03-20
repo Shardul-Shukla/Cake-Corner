@@ -497,53 +497,59 @@ document.querySelectorAll('nav a').forEach(anchor => {
 // ---------------- Active Navbar on Scroll ----------------
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("nav a");
+
 window.addEventListener("scroll", () => {
   let current = "";
   sections.forEach(section => {
     const sectionTop = section.offsetTop - 120;
     if (scrollY >= sectionTop) current = section.getAttribute("id");
   });
+
   navLinks.forEach(link => {
     link.classList.remove("active");
-    if (link.getAttribute("href") === "#" + current) link.classList.add("active");
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
   });
 });
 
 // ---------------- Scroll Reveal ----------------
 const cards = document.querySelectorAll(".card");
+
 function revealCards() {
   cards.forEach(card => {
     const top = card.getBoundingClientRect().top;
-    if (top < window.innerHeight - 50) card.classList.add("show");
+    if (top < window.innerHeight - 50) {
+      card.classList.add("show");
+    }
   });
 }
+
 window.addEventListener("scroll", revealCards);
 window.addEventListener("load", revealCards);
 
 // ---------------- Floating Cart System ----------------
-let cart = [];
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-// Select floating cart elements
+// Elements
 const cartBtn = document.getElementById('cart-btn');
 const cartFloat = document.getElementById('cart-float');
 const cartItemsContainer = document.getElementById('cart-items');
 const cartTotal = document.getElementById('cart-total');
 const whatsappBtn = document.getElementById('whatsapp-order');
+const cartCount = document.getElementById('cart-count');
 
 // ---------------- Add to Cart ----------------
-// Only bind buttons with .add-cart-btn class
-document.querySelectorAll('.add-cart-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const name = btn.dataset.name;
-    const price = parseInt(btn.dataset.price);
-    addToCart(name, price);
-  });
-});
-
 function addToCart(name, price) {
   const existing = cart.find(item => item.name === name);
-  if (existing) existing.qty++;
-  else cart.push({ name, price, qty: 1 });
+
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ name, price, qty: 1 });
+  }
+
+  cartFloat.style.display = 'flex'; // auto open cart
   updateCart();
 }
 
@@ -551,10 +557,16 @@ function addToCart(name, price) {
 function changeQty(nameEncoded, delta) {
   const name = decodeURIComponent(nameEncoded);
   const item = cart.find(i => i.name === name);
+
   if (!item) return;
+
   item.qty += delta;
-  if (item.qty <= 0) removeFromCart(nameEncoded);
-  else updateCart();
+
+  if (item.qty <= 0) {
+    removeFromCart(nameEncoded);
+  } else {
+    updateCart();
+  }
 }
 
 // ---------------- Remove Item ----------------
@@ -564,21 +576,23 @@ function removeFromCart(nameEncoded) {
   updateCart();
 }
 
-// ---------------- Update Cart Display ----------------
+// ---------------- Update Cart ----------------
 function updateCart() {
-  // Update count on floating button
-  const cartCount = document.getElementById('cart-count');
-  cartCount.textContent = cart.reduce((a,b)=>a+b.qty,0);
-
-  // Clear items
   cartItemsContainer.innerHTML = '';
   let total = 0;
+  let count = 0;
+
+  if (cart.length === 0) {
+    cartItemsContainer.innerHTML = "<p style='text-align:center;'>Cart is empty 🛒</p>";
+  }
 
   cart.forEach(item => {
     total += item.price * item.qty;
+    count += item.qty;
+
     const div = document.createElement('div');
     div.innerHTML = `
-      <span>${item.name} x ${item.qty} - ₹${item.price*item.qty}</span>
+      <span>${item.name} x ${item.qty} - ₹${item.price * item.qty}</span>
       <div>
         <button onclick="changeQty('${encodeURIComponent(item.name)}', 1)">➕</button>
         <button onclick="changeQty('${encodeURIComponent(item.name)}', -1)">➖</button>
@@ -589,9 +603,13 @@ function updateCart() {
   });
 
   cartTotal.textContent = total;
+  cartCount.textContent = count;
+
+  // Save cart
+  localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// ---------------- Floating Cart Toggle ----------------
+// ---------------- Cart Toggle ----------------
 cartBtn.addEventListener('click', () => {
   cartFloat.style.display = 'flex';
 });
@@ -600,17 +618,40 @@ function closeCart() {
   cartFloat.style.display = 'none';
 }
 
+// Close when clicking outside
+window.addEventListener('click', (e) => {
+  if (e.target === cartFloat) {
+    closeCart();
+  }
+});
+
 // ---------------- WhatsApp Order ----------------
 whatsappBtn.addEventListener('click', () => {
-  if(cart.length === 0) return alert('Cart is empty!');
-  let message = 'Hi, I want to order:\n';
+  if (cart.length === 0) {
+    alert('Cart is empty!');
+    return;
+  }
+
+  let message = '🧁 *Order from The Cake Corner* 🍰\n\n';
+
   cart.forEach(item => {
-    message += `${item.name} x ${item.qty} = ₹${item.price*item.qty}\n`;
+    message += `${item.name} x ${item.qty} = ₹${item.price * item.qty}\n`;
   });
-  message += `Total: ₹${cart.reduce((a,b)=>a+b.price*b.qty,0)}`;
+
+  const total = cart.reduce((a, b) => a + b.price * b.qty, 0);
+  message += `\nTotal: ₹${total}`;
+
   const url = 'https://wa.me/919687935232?text=' + encodeURIComponent(message);
   window.open(url, '_blank');
+
+  // ✅ CLEAR CART AFTER ORDER
+  cart = [];
+  localStorage.removeItem('cart');
+  updateCart();
+  closeCart();
 });
+// ---------------- INIT ----------------
+updateCart();
 </script>
 
 </body>
